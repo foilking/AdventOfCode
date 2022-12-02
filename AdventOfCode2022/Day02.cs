@@ -92,7 +92,7 @@ public class Day02
         (Result.Lose, RPS.Paper) => RPS.Rock,
         (Result.Lose, RPS.Rock) => RPS.Scissors,
         (Result.Lose, RPS.Scissors) => RPS.Paper,
-        (Result.Draw, _) => opponentThrow
+        (_, _) => opponentThrow
     };
 }
 
