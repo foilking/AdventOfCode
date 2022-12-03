@@ -1,15 +1,35 @@
-public class Day03
+using AdventOfCodeBase;
+
+namespace AdventOfCode2022.DayThree;
+public class Solution : IAdventSolver
 {
-    public Day03()
+    private string _day;
+    private string _year;
+    private string _name;
+    private string Input {get; set;}
+    public Solution()
     {
-        string input = System.IO.File.ReadAllText(@"Day03.in");
-        string[] rucksacks = input.Split(Environment.NewLine);
-        Console.WriteLine($"Total duplicate priority: {Part01(rucksacks)}");
-        Console.WriteLine($"Total badge priority: {Part02(rucksacks)}");
+        _name = "DayThree";
+        _year = "2022";
+        _day = "Three";
+        var currentDirectory = $"{_year}/Day{_day}";
+        var input = System.IO.File.ReadAllText($"{currentDirectory}/input.in");
+        this.Input = input;
     }
 
-    private int Part01(string[] rucksacks)
+    public string Day{
+        get => _day;
+    }
+    public string Year {
+        get => _year;
+    }
+    public string Name {
+        get => _name;
+    }
+
+    public void Part01()
     {
+        string[] rucksacks = Input.Split(Environment.NewLine);
         var prioritySum = 0;
         foreach (var rucksack in rucksacks)
         {
@@ -18,11 +38,12 @@ public class Day03
             var sameGift = compartmentOne.Intersect(compartmentTwo).FirstOrDefault();
             prioritySum += GetPriority(sameGift);
         }
-        return prioritySum;
+        Console.WriteLine($"Part 01 Total duplicate priority: {prioritySum}");
     }
 
-    private int Part02(string[] rucksacks)
+    public void Part02()
     {
+        string[] rucksacks = Input.Split(Environment.NewLine);
         var badgeSum = 0;
         for (int i = 0; i < rucksacks.Length / 3; i++)
         {
@@ -30,7 +51,7 @@ public class Day03
             var badge = IntersectAll<char>(group).FirstOrDefault();
             badgeSum += GetPriority(badge);
         }
-        return badgeSum;
+        Console.WriteLine($"Part 02 Total badge priority: {badgeSum}");
     }
 
     private int GetPriority(char value)

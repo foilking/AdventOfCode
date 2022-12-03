@@ -1,15 +1,34 @@
-public class Day02
+using AdventOfCodeBase;
+
+namespace AdventOfCode2022.DayTwo;
+public class Solution : IAdventSolver
 {
-    public Day02()
+    private string _day;
+    private string _year;
+    private string _name;
+    private string Input {get; set;}
+    public Solution()
     {
-        string input = System.IO.File.ReadAllText(@"Day02.in");
-        string[] rounds = input.Split(Environment.NewLine);
-        Console.WriteLine($"Part 01 Score: {Part01(rounds)}");
-        Console.WriteLine($"Part 02 Score: {Part02(rounds)}");
+        _name = "DayTwo";
+        _year = "2022";
+        _day = "Two";
+        var currentDirectory = $"{_year}/Day{_day}";
+        var input = System.IO.File.ReadAllText($"{currentDirectory}/input.in");
+        this.Input = input;
     }
 
-    public int Part01(string[] rounds)
+    public string Day{
+        get => _day;
+    }
+    public string Year {
+        get => _year;
+    }
+    public string Name {
+        get => _name;
+    }
+    public void Part01()
     {
+        string[] rounds = Input.Split(Environment.NewLine);
         var totalScore = 0;
         foreach (var round in rounds)
         {
@@ -20,11 +39,13 @@ public class Day02
             var score = ScoreThrow(myThrow) + ScoreOutcome(result);
             totalScore += score;
         }
-        return totalScore;
+        Console.WriteLine($"Part 01 Score: {totalScore}");
+
     }
 
-    public int Part02(string[] rounds)
+    public void Part02()
     {
+        string[] rounds = Input.Split(Environment.NewLine);
         var totalScore = 0;
         foreach (var round in rounds)
         {
@@ -35,7 +56,7 @@ public class Day02
             var score = ScoreThrow(myThrow) + ScoreOutcome(desiredResult);
             totalScore += score;
         }
-        return totalScore;
+        Console.WriteLine($"Part 02 Score: {totalScore}");
     }
 
     public string ConvertThrowInput(string input) => (input) switch

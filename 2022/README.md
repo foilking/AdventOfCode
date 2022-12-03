@@ -4,9 +4,9 @@
 
 | Day | Stars | Solution |
 | ------------------------------------------------------------ | ----- | ------------------------------ |
-| [Day 01: Calorie Counting](https://adventofcode.com/2022/day/1) | ⭐️⭐️ | [Solution](Day01.cs) |
-| [Day 02: Rock Paper Scissors](https://adventofcode.com/2022/day/2) | ⭐️⭐️ | [Solution](Day02.cs) |
-| [Day 03: Rucksack Reorganization](https://adventofcode.com/2022/day/3) | ⭐️⭐️ | [Solution](Day03.cs) |
+| [Day 01: Calorie Counting](https://adventofcode.com/2022/day/1) | ⭐️⭐️ | [Solution](DayOne/Solution.cs) |
+| [Day 02: Rock Paper Scissors](https://adventofcode.com/2022/day/2) | ⭐️⭐️ | [Solution](DayTwo/Solution.cs) |
+| [Day 03: Rucksack Reorganization](https://adventofcode.com/2022/day/3) | ⭐️⭐️ | [Solution](DayThree/Solution.cs) |
 | [Day 04](https://adventofcode.com/2022/day/4) |  |  |
 | [Day 05](https://adventofcode.com/2022/day/5) |  |  |
 | [Day 06](https://adventofcode.com/2022/day/6) |  |  |
