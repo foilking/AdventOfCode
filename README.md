@@ -4,4 +4,4 @@
 
 | YEAR                     | STARS    |
 | ------------------------ | -------- |
-| [2022](AdventOfCode2022) | 2 :star: |
+| [2022](AdventOfCode2022) | 6 :star: |
