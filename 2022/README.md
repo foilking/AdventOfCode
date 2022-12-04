@@ -7,7 +7,7 @@
 | [Day 01: Calorie Counting](https://adventofcode.com/2022/day/1) | ⭐️⭐️ | [Solution](Day1/Solution.cs) |
 | [Day 02: Rock Paper Scissors](https://adventofcode.com/2022/day/2) | ⭐️⭐️ | [Solution](Day2/Solution.cs) |
 | [Day 03: Rucksack Reorganization](https://adventofcode.com/2022/day/3) | ⭐️⭐️ | [Solution](Day3/Solution.cs) |
-| [Day 04](https://adventofcode.com/2022/day/4) | ⭐️⭐️ | [Solution](Day4/Solution.cs) |
+| [Day 04: Camp Cleanup](https://adventofcode.com/2022/day/4) | ⭐️⭐️ | [Solution](Day4/Solution.cs) |
 | [Day 05](https://adventofcode.com/2022/day/5) |  |  |
 | [Day 06](https://adventofcode.com/2022/day/6) |  |  |
 | [Day 07](https://adventofcode.com/2022/day/7) |  |  |
