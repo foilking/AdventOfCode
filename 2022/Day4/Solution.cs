@@ -9,62 +9,55 @@ public class Solution : AdventSolver
 
     public override void Part1()
     {
-        string[] assignmentPairs = Input.Split(Environment.NewLine);
-        var fullOverLapCounter = 0;
-        foreach(var assignmentPair in assignmentPairs)
-        {
-            var elfAssignments = assignmentPair.Split(',');
-            var elfSections = new List<List<int>>();
-            foreach (var elfAssignment in elfAssignments)
-            {
-                var sectionIds = elfAssignment.Split('-');
-                var sectionStart = int.Parse(sectionIds[0]);
-                var sectionEnd = int.Parse(sectionIds[1]);
-                var sectionList = Enumerable.Range(sectionStart, sectionEnd - sectionStart + 1).ToList();
-                elfSections.Add(sectionList);
-            }
-            var firstElf = elfSections.First();
-            var secondElf = elfSections.Skip(1).First();
-            var allOfList1IsInList2 = firstElf.Intersect(secondElf).Count() == firstElf.Count();
-            var allOfList2IsInList1 = secondElf.Intersect(firstElf).Count() == secondElf.Count();
-            
-            if (allOfList1IsInList2 || allOfList2IsInList1)
-            {
-                fullOverLapCounter++;
-            }
-        }
-        
+        var fullOverLapCounter = FindDuplicateCount(IsOverlap);
         Console.WriteLine($"{Name} Part 1: {fullOverLapCounter}");
     }
 
     public override void Part2()
     {
+        var duplicateCounter = FindDuplicateCount(HasDuplicate);        
+        Console.WriteLine($"{Name} Part 2: {duplicateCounter}");
+    }
+
+    private int FindDuplicateCount(Func<IEnumerable<int>, IEnumerable<int>, bool> checker)
+    {
         string[] assignmentPairs = Input.Split(Environment.NewLine);
-        var overLapCounter = 0;
+        var duplicateCount = 0;
         foreach(var assignmentPair in assignmentPairs)
         {
             var elfAssignments = assignmentPair.Split(',');
             var elfSections = new List<List<int>>();
             foreach (var elfAssignment in elfAssignments)
             {
-                var sectionIds = elfAssignment.Split('-');
-                var sectionStart = int.Parse(sectionIds[0]);
-                var sectionEnd = int.Parse(sectionIds[1]);
-                var sectionList = Enumerable.Range(sectionStart, sectionEnd - sectionStart + 1).ToList();
+                var sectionIds = elfAssignment.Split('-').Select(int.Parse);
+                var sectionRange = new Range(sectionIds.First(), sectionIds.Last());
+                var sectionList = Enumerable.Range(sectionRange.Start, sectionRange.End - sectionRange.Start + 1).ToList();
                 elfSections.Add(sectionList);
             }
             var firstElf = elfSections.First();
             var secondElf = elfSections.Skip(1).First();
-            var anyOfList1IsInList2 = firstElf.Intersect(secondElf).Any();
-            var anyOfList2IsInList1 = secondElf.Intersect(firstElf).Any();
             
-            if (anyOfList1IsInList2 || anyOfList2IsInList1)
+            if (checker(firstElf, secondElf))
             {
-                overLapCounter++;
+                duplicateCount++;
             }
         }
-        
-        Console.WriteLine($"{Name} Part 2: {overLapCounter}");
+        return duplicateCount;
+    }
 
+    private bool IsOverlap(IEnumerable<int> list1, IEnumerable<int> list2) 
+    {
+        var allOfList1IsInList2 = list1.Intersect(list2).Count() == list1.Count();
+        var allOfList2IsInList1 = list2.Intersect(list1).Count() == list2.Count();
+        return allOfList1IsInList2 || allOfList2IsInList1;
+    }
+    
+    private bool HasDuplicate(IEnumerable<int> list1, IEnumerable<int> list2) 
+    {
+        var anyOfList1IsInList2 = list1.Intersect(list2).Any();
+        var anyOfList2IsInList1 = list2.Intersect(list1).Any();
+        return anyOfList1IsInList2 || anyOfList2IsInList1;
     }
 }
+
+public record struct Range (int Start, int End);
