@@ -1,6 +1,6 @@
 using AdventOfCodeBase;
 
-namespace AdventOfCode2022.DayTwo;
+namespace AdventOfCode2022.Day2;
 public class Solution : IAdventSolver
 {
     private string _day;
@@ -9,9 +9,9 @@ public class Solution : IAdventSolver
     private string Input {get; set;}
     public Solution()
     {
-        _name = "DayTwo";
+        _name = "Day 2";
         _year = "2022";
-        _day = "Two";
+        _day = "2";
         var currentDirectory = $"{_year}/Day{_day}";
         var input = System.IO.File.ReadAllText($"{currentDirectory}/input.in");
         this.Input = input;
@@ -26,7 +26,7 @@ public class Solution : IAdventSolver
     public string Name {
         get => _name;
     }
-    public void Part01()
+    public void Part1()
     {
         string[] rounds = Input.Split(Environment.NewLine);
         var totalScore = 0;
@@ -39,11 +39,11 @@ public class Solution : IAdventSolver
             var score = ScoreThrow(myThrow) + ScoreOutcome(result);
             totalScore += score;
         }
-        Console.WriteLine($"Part 01 Score: {totalScore}");
+        Console.WriteLine($"{_name} Part 1: {totalScore}");
 
     }
 
-    public void Part02()
+    public void Part2()
     {
         string[] rounds = Input.Split(Environment.NewLine);
         var totalScore = 0;
@@ -56,7 +56,7 @@ public class Solution : IAdventSolver
             var score = ScoreThrow(myThrow) + ScoreOutcome(desiredResult);
             totalScore += score;
         }
-        Console.WriteLine($"Part 02 Score: {totalScore}");
+        Console.WriteLine($"{_name} Part 2: {totalScore}");
     }
 
     public string ConvertThrowInput(string input) => (input) switch

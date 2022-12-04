@@ -2,8 +2,8 @@
 
 public interface IAdventSolver
 {
-    void Part01();
-    void Part02();
+    void Part1();
+    void Part2();
 
     string Year{
         get;

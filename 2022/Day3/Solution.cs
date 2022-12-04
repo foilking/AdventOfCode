@@ -1,6 +1,6 @@
 using AdventOfCodeBase;
 
-namespace AdventOfCode2022.DayThree;
+namespace AdventOfCode2022.Day3;
 public class Solution : IAdventSolver
 {
     private string _day;
@@ -9,9 +9,9 @@ public class Solution : IAdventSolver
     private string Input {get; set;}
     public Solution()
     {
-        _name = "DayThree";
+        _name = "Day 3";
         _year = "2022";
-        _day = "Three";
+        _day = "3";
         var currentDirectory = $"{_year}/Day{_day}";
         var input = System.IO.File.ReadAllText($"{currentDirectory}/input.in");
         this.Input = input;
@@ -27,7 +27,7 @@ public class Solution : IAdventSolver
         get => _name;
     }
 
-    public void Part01()
+    public void Part1()
     {
         string[] rucksacks = Input.Split(Environment.NewLine);
         var prioritySum = 0;
@@ -38,10 +38,10 @@ public class Solution : IAdventSolver
             var sameGift = compartmentOne.Intersect(compartmentTwo).FirstOrDefault();
             prioritySum += GetPriority(sameGift);
         }
-        Console.WriteLine($"Part 01 Total duplicate priority: {prioritySum}");
+        Console.WriteLine($"{_name} Part 1: {prioritySum}");
     }
 
-    public void Part02()
+    public void Part2()
     {
         string[] rucksacks = Input.Split(Environment.NewLine);
         var badgeSum = 0;
@@ -51,7 +51,7 @@ public class Solution : IAdventSolver
             var badge = IntersectAll<char>(group).FirstOrDefault();
             badgeSum += GetPriority(badge);
         }
-        Console.WriteLine($"Part 02 Total badge priority: {badgeSum}");
+        Console.WriteLine($"{_name} Part 2: {badgeSum}");
     }
 
     private int GetPriority(char value)

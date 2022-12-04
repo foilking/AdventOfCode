@@ -1,6 +1,6 @@
 ﻿using AdventOfCodeBase;
 
-namespace AdventOfCode2022.DayOne;
+namespace AdventOfCode2022.Day1;
 public class Solution : IAdventSolver
 {
     private string _day;
@@ -9,10 +9,10 @@ public class Solution : IAdventSolver
     private string Input {get; set;}
     public Solution()
     {
-        _name = "DayOne";
+        _name = "Day 1";
         _year = "2022";
-        _day = "One";
-        var currentDirectory = $"{_year}/Day{_day}";
+        _day = "1";
+        var currentDirectory = $"{_year}/Day{_day.ToString()}";
         var input = System.IO.File.ReadAllText($"{currentDirectory}/input.in");
         this.Input = input;
     }
@@ -27,14 +27,14 @@ public class Solution : IAdventSolver
         get => _name;
     }
 
-    public void Part01()
+    public void Part1()
     {
-        Console.WriteLine($"Day 01 Part 1: {Sort(Input).First()}");
+        Console.WriteLine($"{_name} Part 1: {Sort(Input).First()}");
     }
      
-    public void Part02()
+    public void Part2()
     {
-        Console.WriteLine($"Day 01 Part 2: {Sort(Input).Take(3).Sum()}");
+        Console.WriteLine($"{_name} Part 2: {Sort(Input).Take(3).Sum()}");
     }
 
     private IEnumerable<int> Sort(string input)
