@@ -1,32 +1,10 @@
 using AdventOfCodeBase;
 
 namespace AdventOfCode2022.Day2;
-public class Solution : IAdventSolver
-{
-    private string _day;
-    private string _year;
-    private string _name;
-    private string Input {get; set;}
-    public Solution()
-    {
-        _name = "Day 2";
-        _year = "2022";
-        _day = "2";
-        var currentDirectory = $"{_year}/Day{_day}";
-        var input = System.IO.File.ReadAllText($"{currentDirectory}/input.in");
-        this.Input = input;
-    }
-
-    public string Day{
-        get => _day;
-    }
-    public string Year {
-        get => _year;
-    }
-    public string Name {
-        get => _name;
-    }
-    public void Part1()
+public class Solution : AdventSolver
+{    
+    public Solution(bool useSample) : base (useSample, "2022", "2", "Day 2") {}
+    public override void Part1()
     {
         string[] rounds = Input.Split(Environment.NewLine);
         var totalScore = 0;
@@ -39,11 +17,11 @@ public class Solution : IAdventSolver
             var score = ScoreThrow(myThrow) + ScoreOutcome(result);
             totalScore += score;
         }
-        Console.WriteLine($"{_name} Part 1: {totalScore}");
+        Console.WriteLine($"{Name} Part 1: {totalScore}");
 
     }
 
-    public void Part2()
+    public override void Part2()
     {
         string[] rounds = Input.Split(Environment.NewLine);
         var totalScore = 0;
@@ -56,7 +34,7 @@ public class Solution : IAdventSolver
             var score = ScoreThrow(myThrow) + ScoreOutcome(desiredResult);
             totalScore += score;
         }
-        Console.WriteLine($"{_name} Part 2: {totalScore}");
+        Console.WriteLine($"{Name} Part 2: {totalScore}");
     }
 
     public string ConvertThrowInput(string input) => (input) switch

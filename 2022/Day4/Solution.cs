@@ -2,33 +2,12 @@ using AdventOfCodeBase;
 
 namespace AdventOfCode2022.Day4;
 
-public class Solution : IAdventSolver
+public class Solution : AdventSolver
 {
-    private string _day;
-    private string _year;
-    private string _name;
-    private string Input {get; set;}
-    public Solution()
-    {
-        _name = "Day 4";
-        _year = "2022";
-        _day = "4";
-        var currentDirectory = $"{_year}/Day{_day.ToString()}";
-        var input = System.IO.File.ReadAllText($"{currentDirectory}/input.in");
-        this.Input = input;
-    }
+    
+    public Solution(bool useSample) : base (useSample, "2022", "4", "Day 4") {}
 
-    public string Day{
-        get => _day;
-    }
-    public string Year {
-        get => _year;
-    }
-    public string Name {
-        get => _name;
-    }
-
-    public void Part1()
+    public override void Part1()
     {
         string[] assignmentPairs = Input.Split(Environment.NewLine);
         var fullOverLapCounter = 0;
@@ -55,10 +34,10 @@ public class Solution : IAdventSolver
             }
         }
         
-        Console.WriteLine($"{_name} Part 1: {fullOverLapCounter}");
+        Console.WriteLine($"{Name} Part 1: {fullOverLapCounter}");
     }
 
-    public void Part2()
+    public override void Part2()
     {
         string[] assignmentPairs = Input.Split(Environment.NewLine);
         var overLapCounter = 0;
@@ -85,7 +64,7 @@ public class Solution : IAdventSolver
             }
         }
         
-        Console.WriteLine($"{_name} Part 2: {overLapCounter}");
+        Console.WriteLine($"{Name} Part 2: {overLapCounter}");
 
     }
 }
