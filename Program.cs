@@ -26,10 +26,10 @@ cmd.SetHandler((year, day) =>
 {
     Console.WriteLine($"Year: {year} Day: {day}");
     var selectedSolvers = solvers
-        .Where(s => (string.IsNullOrWhiteSpace(year) ? true : s.Year == year) 
+        .Where(s => (string.IsNullOrWhiteSpace(year) ? true : s.Year == year)
             && (string.IsNullOrWhiteSpace(day) ? true : s.Day == day))
         .OrderBy(s => s.Year).ThenBy(s => s.Day);
-        
+
     if (selectedSolvers.Count() > 0)
     {
         foreach (var solver in selectedSolvers)
