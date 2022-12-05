@@ -26,7 +26,7 @@ cmd.SetHandler((year, day, useSample) =>
         }
     }
 
-    Console.WriteLine($"Year: {year} Day: {day} Use Sample: {(useSample.ToString())}");
+    Console.WriteLine($"Year: {year} Day: {day} {(useSample ? "Use Sample: true" : "")}");
     var selectedSolvers = solvers
         .Where(s => (string.IsNullOrWhiteSpace(year) ? true : s.Year == year)
             && (string.IsNullOrWhiteSpace(day) ? true : s.Day == day))
