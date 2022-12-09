@@ -49,7 +49,9 @@ public class Solution : AdventSolver
             if (line.StartsWith("$ cd")) {
                 var dirInfo = line.Replace("$ cd ", "");
                 if (dirInfo.Equals("..")) {
-                    currentNode = currentNode.Parent;
+                    // Chose the if you're at the top level and do this command
+                    // to just return the current node
+                    currentNode = currentNode.Parent ?? currentNode;
                 } else {
                     var childNode = currentNode.Children.First(c => c.Name == dirInfo);
                     currentNode = childNode;
@@ -101,8 +103,8 @@ public class Solution : AdventSolver
 }
 
 public class TreeNode {
-    public string Type {get; set;}
-    public string Name {get; set;}
+    public string Type {get; set;} = default!;
+    public string Name {get; set;} = default!;
     public int Size { get; set;}
     public TreeNode? Parent { get; set; }
     public List<TreeNode> Children {get; set;}

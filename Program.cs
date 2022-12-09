@@ -20,7 +20,7 @@ cmd.SetHandler((year, day, useSample) =>
     
     foreach (System.Reflection.TypeInfo ti in ass!.DefinedTypes!)
     {
-        if (ti.BaseType.Equals(typeof(AdventOfCodeBase.AdventSolver)))
+        if (ti.BaseType != null && ti.BaseType.Equals(typeof(AdventOfCodeBase.AdventSolver)))
         {
             solvers.Add((Activator.CreateInstance(ti.AsType(), args: useSample) as AdventSolver)!);
         }
