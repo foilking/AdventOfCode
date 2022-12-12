@@ -65,25 +65,7 @@ public class Solution : AdventSolver
                 var rightScore = ScenicScore(currentTree, rightTrees);
                 var leftScore = ScenicScore(currentTree, leftTrees);
                 var scenicScore = upScore * downScore * rightScore * leftScore;
-
-                if (scenicScore > scenicHighScore) {
-                    Console.WriteLine($"Postion {h + 1},{w + 1} Tree value {currentTree}");
-                    Console.WriteLine($"Up Trees: {string.Join(',', upTrees)}");
-                    Console.WriteLine($"Up Score: {upScore}");
-                    
-                    Console.WriteLine($"Left Trees: {string.Join(',', leftTrees)}");
-                    Console.WriteLine($"Left Score: {leftScore}");
-                    
-                    Console.WriteLine($"Down Trees: {string.Join(',', downTrees)}");
-                    Console.WriteLine($"Down Score: {downScore}");
-                    
-                    Console.WriteLine($"Right Trees: {string.Join(',', rightTrees)}");
-                    Console.WriteLine($"Right Score: {rightScore}");
-                    
-                    Console.WriteLine($"Scenic Score: {scenicScore}");
-                    Console.WriteLine();
-                }
-
+                
                 if (scenicScore > scenicHighScore) {
                     scenicHighScore = scenicScore;
                 } 
